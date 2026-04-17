@@ -61,6 +61,14 @@ public class ProductService {
         this.categoryRepository = categoryRepository;
     }
 
+
+    @Transactional(readOnly = true)// readOnly = true 상속: 검색은 읽기 전용 트랜잭션으로 충분
+    public List<Product> searchByName(String keyword) {
+        return productRepository.findByNameContaining(keyword); }
+    @Transactional(readOnly = true)
+    public List<Product> searchByCategory(Long categoryId) {
+        return productRepository.findByCategoryId(categoryId); }
+
     /**
      * 카테고리 이름(String) → Category 엔티티 변환
      * 폼에서 받은 카테고리 이름을 DB에서 조회하여 엔티티로 변환합니다.
