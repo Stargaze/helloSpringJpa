@@ -39,7 +39,8 @@ public class DbConfig {
     public DataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/productdb" +
+        // Docker mysql:3306 | JUnit localhost:3306
+        ds.setUrl("jdbc:mysql://mysql:3306/productdb" +
                   "?useSSL=false" +
                   "&allowPublicKeyRetrieval=true" +
                   "&serverTimezone=Asia/Seoul" +
